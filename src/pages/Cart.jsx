@@ -1,7 +1,13 @@
 import React from "react";  
-import CartBlock from "../components/Cart";
-export default function Cart() {
+import CartBlockEmpty from "../components/CartBlockEmpty";
+import CartBlock from "../components/CartBlock";
+export default function Cart(props) {
   return (
-    <CartBlock />
+    <>
+      { props.isEmpty 
+        ? <CartBlockEmpty />
+        : <CartBlock />
+      }
+    </>
   )
 }

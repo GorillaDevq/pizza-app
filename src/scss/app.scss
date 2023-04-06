@@ -1,8 +1,8 @@
 @import 'variables';
 @import 'libs/normalize';
 
-@import 'components/all';
-
+@import 'components/home/all';
+@import 'components/Cart/Cart.scss';
 body {
   background-color: $background;
 }
@@ -32,9 +32,7 @@ body {
 
   &__top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
     @media screen and (max-width: 1300px) {
       flex-direction: column-reverse;
       row-gap: 20px;
@@ -46,9 +44,10 @@ body {
   width: $container-width;
   margin: 0 auto;
 
-  &--cart {
+  &_type_cart {
     max-width: 820px;
     margin: 90px auto;
+    text-align: center;
     .content__title {
       margin: 0;
     }

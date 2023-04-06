@@ -1,9 +1,11 @@
-@import '../variables';
+@import '../../variables';
 
 .categories {
   ul {
     display: flex;
+    width: 100%;
     li {
+      text-align: center;
       background-color: #f9f9f9;
       padding: 13px 30px;
       border-radius: 30px;
@@ -25,6 +27,13 @@
         background-color: #282828;
         color: #fff;
       }
+    }
+
+    @media screen and (max-width: 960px) {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      column-gap: 20px;
+      row-gap: 15px;
     }
   }
 }

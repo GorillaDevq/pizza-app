@@ -1,13 +1,18 @@
-@import '../../scss/variables';
-@import '../../scss/libs/normalize';
-
 .cart {
+  width: 820px;
+  margin: 0 auto;
+
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+  
   .content__title {
     display: flex;
     align-items: center;
@@ -224,10 +229,9 @@
     }
   }
 
-  &--empty {
+  &_type_empty {
     margin: 0 auto;
     width: 560px;
-    text-align: center;
 
     h2 {
       font-size: 32px;
@@ -252,7 +256,7 @@
       margin: 45px auto 60px;
     }
 
-    .button--black {
+    .button_type_black {
       padding: 12px 0 14px;
       width: 230px;
       margin: 0 auto;

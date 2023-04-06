@@ -1,4 +1,4 @@
-@import '../variables';
+@import '../../variables';
 
 .button {
   display: inline-block;
@@ -44,7 +44,7 @@
     border-width: 2px;
   }
 
-  &--black {
+  &_type_black {
     background-color: $black;
 
     &:hover,

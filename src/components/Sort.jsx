@@ -1,14 +1,10 @@
 import React from "react"
-import { sortList } from "../utils/constant"
 
-export default function Sort() {
+export default function Sort(props) {
   const [isOpenPopup, setIsOpenPopup] = React.useState(false)
-  const [activeSort, setActiveSort] = React.useState(0)
-  const [sort, setSort] = React.useState(sortList[activeSort])
 
-  const onClickSortItem = (item, index) => {
-    setSort(item)
-    setActiveSort(index)
+  const onClickSortItem = (item) => {
+    props.onClickType(item);
     setIsOpenPopup((prevState) => !prevState)
   }
 
@@ -28,17 +24,17 @@ export default function Sort() {
             />
           </svg>
           <b>Сортировка по:</b>
-          <span onClick={() => setIsOpenPopup((prevState) => !prevState)}>{sort}</span>
+          <span onClick={() => setIsOpenPopup((prevState) => !prevState)}>{props.activeType.name}</span>
         </div>
         {isOpenPopup && (
           <div className="sort__popup">
             <ul>
-              {sortList.map((item, index) => (
+              {props.sortList.map((item) => (
                 <li 
-                  key={item}
-                  onClick={() => onClickSortItem(item, index)}
-                  className={activeSort === index ? "active" : ""}>
-                  {item}
+                  key={item.name}
+                  onClick={() => onClickSortItem(item)}
+                  className={props.activeType.name === item.name ? "active" : ""}>
+                  {item.name}
                 </li>
               ))}
             </ul>

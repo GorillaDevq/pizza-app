@@ -13,9 +13,9 @@ const typesNames = [
 ]
 
 const sortList = [
-  'популярности', 
-  'цене', 
-  'алфавиту'
+  {name: 'популярности', sort: 'rating'},
+  {name: 'цене', sort: 'price'},
+  {name: 'алфавиту', sort: 'title'}
 ]
 
 

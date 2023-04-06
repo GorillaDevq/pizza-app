@@ -4,9 +4,8 @@ class Api {
   constructor(baseUrl) {
     this._baseUrl = baseUrl
   }
-
-  getPizzas() {
-    return fetch(`${this._baseUrl}/items`)
+  getPizzas(category, typeSort) {
+    return fetch(`${this._baseUrl}/items?${category === 0 ? '' : 'category=' + category}&sortBy=${typeSort}&order=${typeSort === 'title' ? 'asc' : 'desc'}`)
       .then(res => this._checkResponse(res))
   }
 
