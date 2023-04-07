@@ -3,10 +3,11 @@ import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import PizzaSkeleton from "../components/PizzaSkeleton";
+import Paginate from "../components/Pagination";
 import { api } from "../utils/api";
 import { sortList } from "../utils/constant"
 
-export default function HomePage() {
+export default function HomePage(props) {
   // Стейты
   const [pizzaList, setPizzaList] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
@@ -32,6 +33,8 @@ export default function HomePage() {
       .finally(() => setIsLoading(false))
   }, [activeType, activeCategory])
   
+  const renderList = () => pizzaList.filter((item) => item.title.toLowerCase().includes(props.searchValue.toLowerCase())).map((item) => <PizzaBlock {...item} key={item.id}/>)
+  const renderSkeleton = () => [...new Array(6)].map((item, index) => <PizzaSkeleton key={index}/>)
   return (
     <main className="content">
       <div className="container">
@@ -42,8 +45,12 @@ export default function HomePage() {
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
           {isLoading 
-          ? [...new Array(6)].map((item, index) => <PizzaSkeleton key={index}/>)
-          : pizzaList.map((item) => <PizzaBlock {...item} key={item.id}/>)}
+          ? renderSkeleton()
+          : renderList()
+          }
+        </div>
+        <div className="navigation">
+          <Paginate />
         </div>
       </div>
     </main>   

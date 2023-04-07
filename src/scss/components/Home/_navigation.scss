@@ -1,0 +1,43 @@
+.navigation {
+  padding-top: 30px;
+  font-weight: 600;
+
+  &__container{
+    display: flex;
+    
+    .selected {
+      a{
+        color: white;
+        background-color: #fe5f1e;
+      }
+    }
+
+    li {
+
+      a {
+        margin-right: 10px;
+        width: 32px;
+        height: 32px;
+        border: 2px solid #fe5f1e;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 38px;
+        cursor: pointer;
+        color: #fe5f1e;
+
+        &:hover {
+          transition: color 0.5s, background-color 0.5s;
+          color: white;
+          background-color: #fe5f1e;
+        }
+      }
+    }
+
+    .disabled {
+      position: relative;
+      z-index: -1;
+    }
+  }
+}

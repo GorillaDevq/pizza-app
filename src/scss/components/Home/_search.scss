@@ -1,0 +1,46 @@
+@import '../../variables';
+
+.search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 20%;
+
+  &__input {
+    border: 2px solid rgba($color: #cccccc, $alpha: 1.0);
+    border-radius: 25px;
+    width: 100%;
+    padding: 5px 30px;
+    font-size: 16px;
+
+    &:focus {
+      border: 2px solid rgba($color: #a8a8a8, $alpha: 1.2);
+    }
+  }
+
+  &__button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &_type_search {
+      position: absolute;
+      left: 5px;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
+    &_type_clear {
+      position: absolute;
+      right: 5px;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+}
