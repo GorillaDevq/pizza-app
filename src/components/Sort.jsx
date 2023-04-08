@@ -1,10 +1,17 @@
 import React from "react"
+import { setSortType } from "../redux/filter/filterSlice";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function Sort(props) {
+import { sortList } from "../utils/constant";
+
+export default function Sort() {
   const [isOpenPopup, setIsOpenPopup] = React.useState(false)
 
-  const onClickSortItem = (item) => {
-    props.onClickType(item);
+  const activeType = useSelector(state => state.filter.sortType)
+  const dispatch = useDispatch()
+
+  const onClickSortItem = (index) => {
+    dispatch(setSortType(index));
     setIsOpenPopup((prevState) => !prevState)
   }
 
@@ -24,16 +31,16 @@ export default function Sort(props) {
             />
           </svg>
           <b>Сортировка по:</b>
-          <span onClick={() => setIsOpenPopup((prevState) => !prevState)}>{props.activeType.name}</span>
+          <span onClick={() => setIsOpenPopup((prevState) => !prevState)}>{activeType.name}</span>
         </div>
         {isOpenPopup && (
           <div className="sort__popup">
             <ul>
-              {props.sortList.map((item) => (
+              {sortList.map((item, index) => (
                 <li 
                   key={item.name}
-                  onClick={() => onClickSortItem(item)}
-                  className={props.activeType.name === item.name ? "active" : ""}>
+                  onClick={() => onClickSortItem(index)}
+                  className={activeType.name === item.name ? "active" : ""}>
                   {item.name}
                 </li>
               ))}
