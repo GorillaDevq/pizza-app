@@ -1,13 +1,14 @@
 import React from "react";
+import axios from "axios";
+//Компоненты
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import PizzaSkeleton from "../components/PizzaSkeleton";
 import Paginate from "../components/Pagination";
 
+//Редакс
 import { useSelector } from "react-redux";
-
-import { api } from "../utils/api";
 
 export default function HomePage(props) {
   //Стейты
@@ -20,11 +21,9 @@ export default function HomePage(props) {
   //Жизненные циклы
   React.useEffect(() => {
     setIsLoading(true)
-    api.getPizzas(activeCategory, activeType.sort)
-      .then((res) => {
-        setPizzaList(res)
-      })
-      .catch((err) => console.log(err))
+    axios
+      .get(`https://642c00f9208dfe2547253f45.mockapi.io/items?${activeCategory === 0 ? '' : 'category=' + activeCategory}&sortBy=${activeType.sort}&order=${activeType.sort === 'title' ? 'asc' : 'desc'}`)
+      .then(res => setPizzaList(res.data))
       .finally(() => setIsLoading(false))
   }, [activeType, activeCategory])
   
